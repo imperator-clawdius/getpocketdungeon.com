@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="theme-color" content="#0a0808">
+		<meta name="description" content="Pocket Dungeon is a firelit pixel-fantasy AI tabletop adventure for small parties.">
+		<title>Pocket Dungeon</title>
+		<link rel="stylesheet" href="./styles.css">
+	</head>
+	<body>
+		<main class="site-shell">
+			<section class="hero" aria-labelledby="title">
+				<div class="hero-copy">
+					<p class="kicker">Closed test gateway online</p>
+					<h1 id="title">Pocket Dungeon</h1>
+					<p class="lede">A firelit pixel-fantasy adventure where an AI Dungeon Master turns every party choice into the next chamber, omen, bargain, or battle.</p>
+					<div class="actions">
+						<a class="primary" href="https://api.getpocketdungeon.com/health">Check Gateway</a>
+						<a class="secondary" href="mailto:team@getpocketdungeon.com?subject=Pocket%20Dungeon%20tester%20access">Tester Access</a>
+					</div>
+					<p class="status" id="gateway-status">Checking the dungeon gate...</p>
+				</div>
+
+				<div class="stage" aria-hidden="true">
+					<div class="embers"></div>
+					<div class="sigil"></div>
+					<div class="weapon-field" id="weapon-field"></div>
+					<div class="party">
+						<img src="./assets/sprites/characters/knight_blue.png" alt="">
+						<img src="./assets/sprites/characters/wizard_female.png" alt="">
+						<img src="./assets/sprites/characters/rogue_male.png" alt="">
+						<img src="./assets/sprites/characters/cleric_male.png" alt="">
+					</div>
+					<div class="brimstone"></div>
+				</div>
+			</section>
+
+			<section class="panel-grid" aria-label="Pocket Dungeon features">
+				<article>
+					<h2>Living Campaigns</h2>
+					<p>Solo, private, and party sessions use a persistent backend for campaign state, party turns, dice, inventory, XP, and memory.</p>
+				</article>
+				<article>
+					<h2>AI Dungeon Master</h2>
+					<p>The public website never receives provider keys. The private gateway handles model routing, validation, safety hints, and narration.</p>
+				</article>
+				<article>
+					<h2>Android First</h2>
+					<p>The tester APK connects to the same production gateway at api.getpocketdungeon.com while the source repo stays private.</p>
+				</article>
+			</section>
+		</main>
+		<script src="./site.js" type="module"></script>
+	</body>
+</html>
