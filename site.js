@@ -1,6 +1,42 @@
 const API_HEALTH = 'https://api.getpocketdungeon.com/health';
 
 checkGateway();
+initLocationSlideshow();
+
+function initLocationSlideshow() {
+	const root = document.querySelector('[data-slideshow]');
+	if (!root) return;
+
+	const slides = Array.from(root.querySelectorAll('.location-slide'));
+	const dots = Array.from(root.querySelectorAll('[data-slide-dot]'));
+	const previous = root.querySelector('[data-slide-prev]');
+	const next = root.querySelector('[data-slide-next]');
+	if (!slides.length) return;
+
+	let activeIndex = 0;
+
+	function showSlide(index) {
+		activeIndex = (index + slides.length) % slides.length;
+		for (const [slideIndex, slide] of slides.entries()) {
+			const isActive = slideIndex === activeIndex;
+			slide.classList.toggle('active', isActive);
+			slide.setAttribute('aria-hidden', String(!isActive));
+		}
+		for (const [dotIndex, dot] of dots.entries()) {
+			const isActive = dotIndex === activeIndex;
+			dot.classList.toggle('active', isActive);
+			dot.setAttribute('aria-selected', String(isActive));
+		}
+	}
+
+	previous?.addEventListener('click', () => showSlide(activeIndex - 1));
+	next?.addEventListener('click', () => showSlide(activeIndex + 1));
+	for (const [index, dot] of dots.entries()) {
+		dot.addEventListener('click', () => showSlide(index));
+	}
+
+	showSlide(0);
+}
 
 async function checkGateway() {
 	const status = document.getElementById('gateway-status');

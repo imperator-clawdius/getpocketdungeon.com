@@ -19,8 +19,10 @@
 			</a>
 			<nav aria-label="Primary">
 				<a href="#modes">Modes</a>
+				<a href="#locations">Locations</a>
 				<a href="#systems">Systems</a>
 				<a href="#status">Status</a>
+				<a href="./contact.html">Contact</a>
 			</nav>
 		</header>
 
@@ -65,23 +67,77 @@
 				</article>
 			</section>
 
-			<section class="world-strip" aria-label="Pocket Dungeon scene concepts">
-				<article>
-					<img src="./assets/graphics/dungeon-corridor.png" alt="Torchlit pixel art dungeon corridor with iron gates and teal magic.">
-					<span>Dungeon Gates</span>
-				</article>
-				<article>
-					<img src="./assets/graphics/ancient-forest.png" alt="Ancient pixel art forest path with glowing mushrooms and ruins.">
-					<span>Ancient Forest</span>
-				</article>
-				<article>
-					<img src="./assets/graphics/storm-coast.png" alt="Pixel art storm coast harbor with ship, lighthouse, and crimson moon.">
-					<span>Storm Coast</span>
-				</article>
-				<article>
-					<img src="./assets/graphics/tavern-hall.png" alt="Firelit pixel art fantasy tavern interior with tables and quest board.">
-					<span>Tavern Hall</span>
-				</article>
+			<section id="locations" class="locations-showcase" aria-labelledby="locations-title">
+				<div class="section-head">
+					<p class="kicker">World locations</p>
+					<h2 id="locations-title">Example places the Dungeon Master can pull from.</h2>
+				</div>
+				<div class="slideshow" data-slideshow>
+					<div class="slide-stage">
+						<figure class="location-slide active">
+							<img src="./assets/graphics/hero-crimson-keep.png" alt="Pixel art fortress under a crimson moon, with adventurers approaching a gothic castle.">
+							<figcaption>
+								<strong>Crimson Keep</strong>
+								<span>Moonlit stronghold, siege road, infernal terraces</span>
+							</figcaption>
+						</figure>
+						<figure class="location-slide">
+							<img src="./assets/graphics/ashen-bell-topographic.png" alt="Pixel art topographical map of Ashen Bell Crypt with contour lines, ravine, route, camp marker, and crypt entrance.">
+							<figcaption>
+								<strong>Ashen Bell Crypt</strong>
+								<span>Route map, ravine crossing, buried bell shrine</span>
+							</figcaption>
+						</figure>
+						<figure class="location-slide">
+							<img src="./assets/graphics/dungeon-corridor.png" alt="Torchlit pixel art dungeon corridor with iron gates and teal magic.">
+							<figcaption>
+								<strong>Dungeon Gates</strong>
+								<span>Iron doors, cursed stairwells, rune-lit thresholds</span>
+							</figcaption>
+						</figure>
+						<figure class="location-slide">
+							<img src="./assets/graphics/ancient-forest.png" alt="Ancient pixel art forest path with glowing mushrooms and ruins.">
+							<figcaption>
+								<strong>Ancient Forest</strong>
+								<span>Old-growth trail, fungal lanterns, ruined archways</span>
+							</figcaption>
+						</figure>
+						<figure class="location-slide">
+							<img src="./assets/graphics/storm-coast.png" alt="Pixel art storm coast harbor with ship, lighthouse, and crimson moon.">
+							<figcaption>
+								<strong>Storm Coast</strong>
+								<span>Harbor approach, lighthouse watch, blackwater tide</span>
+							</figcaption>
+						</figure>
+						<figure class="location-slide">
+							<img src="./assets/graphics/tavern-hall.png" alt="Firelit pixel art fantasy tavern interior with tables and quest board.">
+							<figcaption>
+								<strong>Tavern Hall</strong>
+								<span>Quest board, warm hearth, rumor table</span>
+							</figcaption>
+						</figure>
+						<figure class="location-slide">
+							<img src="./assets/graphics/workbench-status.png" alt="Pixel art fantasy development workbench with magical map, candles, dice, and parchment.">
+							<figcaption>
+								<strong>Table of Omens</strong>
+								<span>Campaign planning, dice, candles, projected encounter map</span>
+							</figcaption>
+						</figure>
+					</div>
+					<div class="slideshow-controls" aria-label="Location slideshow controls">
+						<button class="slide-button" type="button" data-slide-prev aria-label="Previous location">Prev</button>
+						<div class="slide-dots" role="tablist" aria-label="Location slides">
+							<button class="active" type="button" data-slide-dot aria-label="Show Crimson Keep"></button>
+							<button type="button" data-slide-dot aria-label="Show Ashen Bell Crypt"></button>
+							<button type="button" data-slide-dot aria-label="Show Dungeon Gates"></button>
+							<button type="button" data-slide-dot aria-label="Show Ancient Forest"></button>
+							<button type="button" data-slide-dot aria-label="Show Storm Coast"></button>
+							<button type="button" data-slide-dot aria-label="Show Tavern Hall"></button>
+							<button type="button" data-slide-dot aria-label="Show Table of Omens"></button>
+						</div>
+						<button class="slide-button" type="button" data-slide-next aria-label="Next location">Next</button>
+					</div>
+				</div>
 			</section>
 
 			<section id="status" class="build-status" aria-labelledby="status-title">
@@ -153,7 +209,7 @@
 		</main>
 		<footer class="site-footer">
 			<span>Pocket Dungeon is in active development.</span>
-			<a href="mailto:team@getpocketdungeon.com?subject=Pocket%20Dungeon%20tester%20access">Tester access</a>
+			<a href="./contact.html">Contact us</a>
 		</footer>
 		<script src="./site.js" type="module"></script>
 	</body>
