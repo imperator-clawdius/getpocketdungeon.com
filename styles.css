@@ -259,28 +259,12 @@ h1 {
 	z-index: 5;
 }
 
-.board-sky,
 .sigil,
 .gateway-arch,
-.monster-eyes,
-.weapon-field,
-.party,
+.character-collage,
 .brimstone,
 .fire-column {
 	position: absolute;
-}
-
-.board-sky {
-	inset: 0;
-	background:
-		radial-gradient(circle at 10% 24%, #ffd087 0 2px, transparent 3px),
-		radial-gradient(circle at 28% 44%, #e3542f 0 2px, transparent 3px),
-		radial-gradient(circle at 51% 18%, #76d8bd 0 1px, transparent 2px),
-		radial-gradient(circle at 72% 35%, #b263ff 0 1px, transparent 2px),
-		radial-gradient(circle at 89% 17%, #ffd087 0 2px, transparent 3px);
-	background-size: 96px 70px;
-	opacity: 0.78;
-	animation: embers 4.5s steps(4, end) infinite;
 }
 
 .gateway-arch {
@@ -324,19 +308,6 @@ h1 {
 	animation: sigil 2.8s steps(2, end) infinite;
 }
 
-.monster-eyes {
-	left: 49%;
-	top: 36%;
-	width: 68px;
-	height: 22px;
-	transform: translateX(-50%);
-	background:
-		radial-gradient(circle at 23% 50%, var(--mystic) 0 5px, transparent 6px),
-		radial-gradient(circle at 77% 50%, var(--mystic) 0 5px, transparent 6px);
-	filter: drop-shadow(0 0 10px rgba(118, 216, 189, 0.7));
-	animation: blink 5s steps(1, end) infinite;
-}
-
 .brimstone {
 	inset: auto 0 0;
 	height: 33%;
@@ -345,47 +316,58 @@ h1 {
 		linear-gradient(180deg, transparent, rgba(84, 16, 16, 0.94) 24%, #140809 78%);
 }
 
-.party {
-	inset: auto 5% 10%;
-	display: flex;
-	align-items: flex-end;
-	gap: clamp(8px, 2.4vw, 22px);
-	height: 46%;
+.character-collage {
+	inset: 12% 5% 9%;
+	display: grid;
+	grid-template-rows: 1fr 0.92fr 1.08fr;
+	gap: clamp(6px, 1.4vw, 14px);
 	z-index: 3;
+	align-items: end;
 }
 
-.party img {
-	width: clamp(54px, 11vw, 96px);
+.collage-band {
+	display: grid;
+	align-items: end;
+	justify-items: center;
+	gap: clamp(2px, 0.65vw, 8px);
+	min-height: 0;
+}
+
+.collage-band.heroes {
+	grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.collage-band.townsfolk {
+	grid-template-columns: repeat(8, minmax(0, 1fr));
+	padding-inline: 6%;
+}
+
+.collage-band.encounters {
+	grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+
+.collage-band img {
+	width: min(100%, 64px);
+	max-height: 100%;
 	height: auto;
-	filter: drop-shadow(0 8px 0 rgba(0, 0, 0, 0.34)) drop-shadow(0 0 12px rgba(247, 110, 43, 0.24));
 	image-rendering: pixelated;
+	object-fit: contain;
+	filter: drop-shadow(0 7px 0 rgba(0, 0, 0, 0.36)) drop-shadow(0 0 11px rgba(247, 110, 43, 0.22));
 }
 
-.party img:nth-child(2) {
-	transform: translateY(-12px);
-	filter: drop-shadow(0 8px 0 rgba(0, 0, 0, 0.34)) drop-shadow(0 0 16px rgba(118, 216, 189, 0.36));
+.collage-band.heroes img:nth-child(even),
+.collage-band.townsfolk img:nth-child(odd),
+.collage-band.encounters img:nth-child(even) {
+	transform: translateY(-5%);
 }
 
-.party img:nth-child(3) { transform: translateY(5px); }
-.party img:nth-child(4) { transform: translateY(-4px); }
-
-.weapon-field {
-	inset: 0;
-	z-index: 2;
+.collage-band.townsfolk img {
+	width: min(100%, 58px);
+	filter: drop-shadow(0 7px 0 rgba(0, 0, 0, 0.34)) drop-shadow(0 0 10px rgba(118, 216, 189, 0.18));
 }
 
-.weapon {
-	position: absolute;
-	width: var(--size, 34px);
-	height: var(--size, 34px);
-	left: var(--x, 20%);
-	top: var(--y, 20%);
-	opacity: var(--alpha, 0.72);
-	transform: rotate(var(--rotate, 0deg));
-	filter: drop-shadow(0 0 8px rgba(246, 192, 111, 0.3));
-	pointer-events: none;
-	image-rendering: pixelated;
-	animation: glint 2.7s steps(3, end) infinite;
+.collage-band.encounters img {
+	width: min(100%, 72px);
 }
 
 .hud-card {
@@ -812,23 +794,10 @@ h1 {
 	}
 }
 
-@keyframes embers {
-	50% { transform: translateY(-8px); opacity: 0.55; }
-}
-
 @keyframes sigil {
 	50% { opacity: 0.55; transform: scale(1.04); }
 }
 
-@keyframes glint {
-	50% { filter: drop-shadow(0 0 13px rgba(246, 192, 111, 0.48)); }
-}
-
 @keyframes flame {
 	50% { clip-path: polygon(47% 0, 72% 18%, 56% 30%, 85% 45%, 58% 100%, 22% 100%, 42% 50%, 15% 34%, 31% 17%); }
-}
-
-@keyframes blink {
-	0%, 88%, 100% { opacity: 1; }
-	90%, 94% { opacity: 0; }
 }
