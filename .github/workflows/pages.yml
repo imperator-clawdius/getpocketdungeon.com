@@ -29,7 +29,7 @@ jobs:
       - name: Stage static site
         run: |
           mkdir -p _site
-          cp index.html styles.css site.js CNAME README.md _site/
+          cp *.html styles.css site.js CNAME README.md _site/
           cp -R assets _site/assets
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
