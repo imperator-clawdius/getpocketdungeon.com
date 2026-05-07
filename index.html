@@ -9,22 +9,43 @@
 		<link rel="stylesheet" href="./styles.css">
 	</head>
 	<body>
-		<main class="site-shell">
+		<div class="world-glow" aria-hidden="true"></div>
+		<header class="topbar">
+			<a class="brand-mark" href="#top" aria-label="Pocket Dungeon home">
+				<span class="brand-sigil"></span>
+				<span>Pocket Dungeon</span>
+			</a>
+			<nav aria-label="Primary">
+				<a href="#modes">Modes</a>
+				<a href="#systems">Systems</a>
+				<a href="https://api.getpocketdungeon.com/health">Gateway</a>
+			</nav>
+		</header>
+
+		<main id="top" class="site-shell">
 			<section class="hero" aria-labelledby="title">
 				<div class="hero-copy">
 					<p class="kicker">Closed test gateway online</p>
 					<h1 id="title">Pocket Dungeon</h1>
 					<p class="lede">A firelit pixel-fantasy adventure where an AI Dungeon Master turns every party choice into the next chamber, omen, bargain, or battle.</p>
 					<div class="actions">
-						<a class="primary" href="https://api.getpocketdungeon.com/health">Check Gateway</a>
-						<a class="secondary" href="mailto:team@getpocketdungeon.com?subject=Pocket%20Dungeon%20tester%20access">Tester Access</a>
+						<a class="primary" href="mailto:team@getpocketdungeon.com?subject=Pocket%20Dungeon%20tester%20access">Request Tester Access</a>
+						<a class="secondary" href="https://api.getpocketdungeon.com/health">Check Gateway</a>
 					</div>
-					<p class="status" id="gateway-status">Checking the dungeon gate...</p>
+					<div class="status-strip">
+						<p class="status" id="gateway-status">Checking the dungeon gate...</p>
+						<span>Android first</span>
+						<span>Private backend</span>
+					</div>
 				</div>
 
-				<div class="stage" aria-hidden="true">
-					<div class="embers"></div>
+				<div class="dungeon-board" aria-hidden="true">
+					<div class="board-sky"></div>
+					<div class="fire-column left"></div>
+					<div class="fire-column right"></div>
 					<div class="sigil"></div>
+					<div class="gateway-arch"></div>
+					<div class="monster-eyes"></div>
 					<div class="weapon-field" id="weapon-field"></div>
 					<div class="party">
 						<img src="./assets/sprites/characters/knight_blue.png" alt="">
@@ -32,23 +53,55 @@
 						<img src="./assets/sprites/characters/rogue_male.png" alt="">
 						<img src="./assets/sprites/characters/cleric_male.png" alt="">
 					</div>
+					<div class="hud-card hud-turn">
+						<span>Turn</span>
+						<strong>Narrating</strong>
+					</div>
+					<div class="hud-card hud-roll">
+						<span>Roll</span>
+						<strong>d20 + 5</strong>
+					</div>
 					<div class="brimstone"></div>
 				</div>
 			</section>
 
-			<section class="panel-grid" aria-label="Pocket Dungeon features">
+			<section id="modes" class="mode-strip" aria-label="Pocket Dungeon play modes">
 				<article>
-					<h2>Living Campaigns</h2>
-					<p>Solo, private, and party sessions use a persistent backend for campaign state, party turns, dice, inventory, XP, and memory.</p>
+					<span class="mode-icon">I</span>
+					<h2>Solo Delve</h2>
+					<p>Start instantly with AI companions and a campaign that remembers the trail.</p>
 				</article>
 				<article>
-					<h2>AI Dungeon Master</h2>
-					<p>The public website never receives provider keys. The private gateway handles model routing, validation, safety hints, and narration.</p>
+					<span class="mode-icon">II</span>
+					<h2>Private Party</h2>
+					<p>Share a passkey, gather a small crew, and resolve each turn together.</p>
 				</article>
 				<article>
-					<h2>Android First</h2>
-					<p>The tester APK connects to the same production gateway at api.getpocketdungeon.com while the source repo stays private.</p>
+					<span class="mode-icon">III</span>
+					<h2>Matchmaking</h2>
+					<p>Queue into a public adventure; missing seats are filled by NPC allies.</p>
 				</article>
+			</section>
+
+			<section id="systems" class="systems">
+				<div class="map-panel">
+					<div class="map-node active"></div>
+					<div class="map-node"></div>
+					<div class="map-node boss"></div>
+					<div class="map-route r1"></div>
+					<div class="map-route r2"></div>
+					<div class="map-label">Ashen Bell Crypt</div>
+				</div>
+				<div class="system-copy">
+					<p class="kicker">Built like a live table</p>
+					<h2>One gateway, many strange doors.</h2>
+					<p>The public site is just the torch at the entrance. The private backend handles model routing, campaign state, dice, audio, memory, multiplayer turns, and safety checks behind <strong>api.getpocketdungeon.com</strong>.</p>
+					<ul class="rune-list">
+						<li>Envelope-validated Dungeon Master turns</li>
+						<li>Persistent campaign memory and party state</li>
+						<li>Android tester builds pointed at the same gateway</li>
+					</ul>
+				</div>
 			</section>
 		</main>
 		<script src="./site.js" type="module"></script>
