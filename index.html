@@ -91,13 +91,77 @@
 			</section>
 
 			<section id="systems" class="systems">
-				<div class="map-panel">
-					<div class="map-node active"></div>
-					<div class="map-node"></div>
-					<div class="map-node boss"></div>
-					<div class="map-route r1"></div>
-					<div class="map-route r2"></div>
-					<div class="map-label">Ashen Bell Crypt</div>
+				<div class="map-panel" aria-label="Topographical map of Ashen Bell Crypt">
+					<svg class="topo-map" viewBox="0 0 720 520" role="img" aria-labelledby="ashen-map-title ashen-map-desc">
+						<title id="ashen-map-title">Ashen Bell Crypt topographical map</title>
+						<desc id="ashen-map-desc">A stylized topographical map with contour lines, a ravine, the Pilgrim Road, and the Ashen Bell Crypt entrance marked on a ridge.</desc>
+						<defs>
+							<pattern id="map-grid" width="36" height="36" patternUnits="userSpaceOnUse">
+								<path d="M 36 0 L 0 0 0 36" fill="none" stroke="rgba(246,239,226,0.08)" stroke-width="1"/>
+							</pattern>
+							<linearGradient id="terrain-glow" x1="0%" x2="100%" y1="0%" y2="100%">
+								<stop offset="0%" stop-color="#23302c"/>
+								<stop offset="54%" stop-color="#221919"/>
+								<stop offset="100%" stop-color="#3a1916"/>
+							</linearGradient>
+							<filter id="map-shadow" x="-20%" y="-20%" width="140%" height="140%">
+								<feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#000000" flood-opacity="0.35"/>
+							</filter>
+						</defs>
+
+						<rect class="topo-base" width="720" height="520" rx="12"/>
+						<rect class="topo-grid" width="720" height="520" rx="12"/>
+						<path class="topo-ravine" d="M5 394 C92 354 129 327 183 346 C250 370 280 321 344 292 C431 251 465 270 526 230 C585 193 634 141 718 129"/>
+						<path class="topo-stream" d="M18 405 C107 368 142 345 190 361 C258 383 288 334 350 304 C437 262 471 282 533 242 C594 202 637 154 706 142"/>
+
+						<g class="contours ridge-north">
+							<path d="M74 126 C124 51 247 33 317 90 C379 141 340 229 262 241 C176 253 40 223 74 126Z"/>
+							<path d="M112 135 C151 77 240 65 288 106 C330 143 300 199 247 207 C184 217 88 203 112 135Z"/>
+							<path d="M151 144 C179 111 234 104 262 127 C288 149 271 178 236 184 C198 191 131 181 151 144Z"/>
+							<path class="index" d="M194 150 C211 136 239 136 250 150 C261 165 243 173 220 173 C202 173 181 163 194 150Z"/>
+						</g>
+
+						<g class="contours crypt-hill">
+							<path class="index" d="M331 313 C376 218 526 181 613 252 C692 317 632 428 521 449 C410 470 282 416 331 313Z"/>
+							<path d="M365 320 C400 248 515 222 578 272 C635 318 590 397 510 412 C428 428 327 390 365 320Z"/>
+							<path d="M402 322 C425 281 499 266 542 298 C580 327 552 370 499 380 C449 389 373 365 402 322Z"/>
+							<path class="index" d="M440 323 C456 304 498 296 520 311 C540 326 525 352 491 356 C463 360 423 344 440 323Z"/>
+						</g>
+
+						<g class="contours lowlands">
+							<path d="M34 456 C98 420 170 413 234 444 C294 473 348 470 405 443 C453 420 514 432 571 479"/>
+							<path d="M84 492 C151 462 210 462 264 486 C318 510 361 508 417 482 C461 462 510 468 555 505"/>
+						</g>
+
+						<path class="pilgrim-road" d="M30 463 C96 426 140 395 186 374 C234 352 292 351 345 337 C401 322 443 306 485 306"/>
+						<path class="old-stairs" d="M486 307 L503 294 L522 286 L541 280"/>
+						<g class="map-marker camp">
+							<circle cx="69" cy="442" r="9"/>
+							<path d="M62 455 L76 455 L69 438Z"/>
+						</g>
+						<g class="map-marker crypt">
+							<circle cx="546" cy="277" r="15"/>
+							<path d="M537 283 L537 271 Q546 259 555 271 L555 283Z"/>
+							<path d="M542 283 L542 274 L550 274 L550 283Z"/>
+						</g>
+
+						<text class="map-name" x="32" y="48">Ashen Bell Crypt</text>
+						<text class="map-note" x="34" y="76">contour interval 40 ft</text>
+						<text class="map-label-svg" x="558" y="262">crypt mouth</text>
+						<text class="map-label-svg" x="82" y="431">camp</text>
+						<text class="map-label-svg small" x="395" y="296">Pilgrim Road</text>
+						<text class="map-label-svg small" x="238" y="118">black bell ridge 680</text>
+						<text class="map-label-svg small" x="487" y="398">sinkhole shelf 520</text>
+					</svg>
+					<div class="map-legend" aria-hidden="true">
+						<span><i class="line contour"></i>Contour</span>
+						<span><i class="line road"></i>Route</span>
+						<span><i class="dot crypt"></i>Crypt</span>
+					</div>
+					<div class="map-scale" aria-hidden="true">
+						<span></span>
+						<small>0.5 mi</small>
+					</div>
 				</div>
 				<div class="system-copy">
 					<p class="kicker">The concept</p>
