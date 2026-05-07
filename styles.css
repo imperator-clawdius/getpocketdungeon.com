@@ -278,8 +278,10 @@ h1 {
 
 .mode-strip article,
 .build-status,
+.status-art,
 .status-grid article,
 .concept-strip article,
+.world-strip article,
 .system-copy,
 .map-panel {
 	border: 1px solid var(--line);
@@ -297,7 +299,8 @@ h1 {
 
 .mode-strip article::before,
 .status-grid article::before,
-.concept-strip article::before {
+.concept-strip article::before,
+.world-strip article::before {
 	content: "";
 	position: absolute;
 	inset: 0;
@@ -348,6 +351,53 @@ h1 {
 	line-height: 1.55;
 }
 
+.world-strip {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 14px;
+	margin-top: clamp(24px, 5vw, 54px);
+}
+
+.world-strip article {
+	position: relative;
+	min-height: 210px;
+	overflow: hidden;
+	background: #120c0d;
+}
+
+.world-strip img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	min-height: 210px;
+	object-fit: cover;
+	image-rendering: pixelated;
+	filter: saturate(0.95) contrast(1.05);
+}
+
+.world-strip article::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, transparent 35%, rgba(10, 8, 8, 0.78));
+	pointer-events: none;
+}
+
+.world-strip span {
+	position: absolute;
+	left: 14px;
+	bottom: 14px;
+	z-index: 1;
+	padding: 7px 9px;
+	border: 1px solid rgba(224, 173, 89, 0.28);
+	border-radius: 4px;
+	background: rgba(10, 8, 8, 0.7);
+	color: var(--gold);
+	font: 900 11px/1 ui-monospace, "SF Mono", Menlo, monospace;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
 .build-status {
 	position: relative;
 	display: grid;
@@ -386,6 +436,34 @@ h1 {
 	max-width: 820px;
 	font-size: 17px;
 	line-height: 1.62;
+}
+
+.status-art {
+	position: relative;
+	z-index: 1;
+	margin: 0;
+	overflow: hidden;
+	aspect-ratio: 16 / 7;
+	background: #120c0d;
+}
+
+.status-art::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background:
+		linear-gradient(90deg, rgba(10, 8, 8, 0.48), transparent 35%, rgba(10, 8, 8, 0.36)),
+		linear-gradient(180deg, transparent, rgba(10, 8, 8, 0.42));
+	pointer-events: none;
+}
+
+.status-art img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: 50% 48%;
+	image-rendering: pixelated;
 }
 
 .status-grid {
@@ -457,10 +535,7 @@ h1 {
 	position: relative;
 	min-height: 360px;
 	overflow: hidden;
-	background:
-		linear-gradient(180deg, rgba(17, 25, 24, 0.96), rgba(16, 10, 11, 0.96)),
-		repeating-linear-gradient(0deg, transparent 0 31px, rgba(224, 173, 89, 0.035) 31px 32px),
-		repeating-linear-gradient(90deg, transparent 0 31px, rgba(224, 173, 89, 0.035) 31px 32px);
+	background: #120c0d;
 	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.42), 0 18px 42px rgba(0, 0, 0, 0.25);
 }
 
@@ -469,213 +544,51 @@ h1 {
 	position: absolute;
 	inset: 0;
 	background:
-		radial-gradient(circle at 24% 20%, rgba(118, 216, 189, 0.13), transparent 26%),
-		radial-gradient(circle at 76% 65%, rgba(227, 84, 47, 0.16), transparent 28%);
+		linear-gradient(180deg, rgba(10, 8, 8, 0.08), transparent 48%, rgba(10, 8, 8, 0.46)),
+		linear-gradient(90deg, rgba(10, 8, 8, 0.4), transparent 20%, transparent 75%, rgba(10, 8, 8, 0.36));
 	pointer-events: none;
 	z-index: 1;
 }
 
-.topo-map {
-	position: absolute;
-	inset: 0;
+.map-panel img {
+	display: block;
 	width: 100%;
 	height: 100%;
-	display: block;
-	filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.22));
+	min-height: 360px;
+	object-fit: cover;
+	image-rendering: pixelated;
 }
 
-.topo-base {
-	fill: url(#terrain-glow);
-}
-
-.topo-grid {
-	fill: url(#map-grid);
-	opacity: 0.74;
-}
-
-.topo-ravine {
-	fill: none;
-	stroke: rgba(9, 7, 8, 0.62);
-	stroke-width: 34;
-	stroke-linecap: round;
-}
-
-.topo-stream {
-	fill: none;
-	stroke: rgba(118, 216, 189, 0.52);
-	stroke-width: 5;
-	stroke-linecap: round;
-	stroke-dasharray: 14 10;
-}
-
-.contours path {
-	fill: none;
-	stroke: rgba(224, 173, 89, 0.5);
-	stroke-width: 2.25;
-	stroke-linecap: round;
-	stroke-linejoin: round;
-}
-
-.contours path.index {
-	stroke: rgba(246, 239, 226, 0.7);
-	stroke-width: 3.25;
-}
-
-.ridge-north path {
-	stroke: rgba(118, 216, 189, 0.44);
-}
-
-.crypt-hill path {
-	stroke: rgba(224, 173, 89, 0.58);
-}
-
-.lowlands path {
-	stroke: rgba(185, 170, 150, 0.35);
-}
-
-.pilgrim-road,
-.old-stairs {
-	fill: none;
-	stroke-linecap: round;
-	stroke-linejoin: round;
-}
-
-.pilgrim-road {
-	stroke: #e0ad59;
-	stroke-width: 6;
-	stroke-dasharray: 18 10;
-	filter: url(#map-shadow);
-}
-
-.old-stairs {
-	stroke: rgba(246, 239, 226, 0.72);
-	stroke-width: 4;
-	stroke-dasharray: 6 8;
-}
-
-.map-marker circle {
-	fill: rgba(10, 8, 8, 0.78);
-	stroke-width: 3;
-}
-
-.map-marker path {
-	fill: rgba(246, 239, 226, 0.85);
-}
-
-.map-marker.camp circle {
-	stroke: var(--mystic);
-}
-
-.map-marker.crypt circle {
-	stroke: var(--fire);
-	filter: drop-shadow(0 0 12px rgba(227, 84, 47, 0.55));
-}
-
-.map-name,
-.map-note,
-.map-label-svg {
-	font-family: ui-monospace, "SF Mono", Menlo, monospace;
-	font-weight: 900;
-	paint-order: stroke;
-	stroke: rgba(10, 8, 8, 0.82);
-	stroke-width: 4px;
-	stroke-linejoin: round;
-}
-
-.map-name {
-	fill: var(--gold);
-	font-size: 25px;
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
-}
-
-.map-note {
-	fill: var(--muted);
-	font-size: 13px;
-	letter-spacing: 0.06em;
-}
-
-.map-label-svg {
-	fill: var(--ink);
-	font-size: 13px;
-}
-
-.map-label-svg.small {
-	fill: var(--muted);
-	font-size: 11px;
-}
-
-.map-legend {
+.map-caption {
 	position: absolute;
 	left: 16px;
-	right: 16px;
 	bottom: 16px;
 	z-index: 2;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 8px;
-	align-items: center;
-	padding: 10px 12px;
-	border: 1px solid rgba(224, 173, 89, 0.24);
-	border-radius: 5px;
-	background: rgba(10, 8, 8, 0.72);
-	color: var(--muted);
-	font: 900 11px/1 ui-monospace, "SF Mono", Menlo, monospace;
-	text-transform: uppercase;
-	letter-spacing: 0.06em;
-}
-
-.map-legend span {
-	display: inline-flex;
-	align-items: center;
-	gap: 7px;
-}
-
-.map-legend .line,
-.map-legend .dot {
-	display: inline-block;
-	flex: 0 0 auto;
-}
-
-.map-legend .line {
-	width: 24px;
-	height: 0;
-	border-top: 2px solid var(--gold);
-}
-
-.map-legend .line.road {
-	border-top: 3px dashed var(--gold);
-}
-
-.map-legend .dot {
-	width: 10px;
-	height: 10px;
-	border: 2px solid var(--fire);
-	border-radius: 50%;
-	box-shadow: 0 0 10px rgba(227, 84, 47, 0.42);
-}
-
-.map-scale {
-	position: absolute;
-	right: 18px;
-	top: 18px;
-	z-index: 2;
 	display: grid;
-	gap: 5px;
-	justify-items: end;
-	color: var(--muted);
-	font: 900 11px/1 ui-monospace, "SF Mono", Menlo, monospace;
-	text-transform: uppercase;
-	letter-spacing: 0.06em;
+	gap: 4px;
+	padding: 10px 12px;
+	border: 1px solid rgba(224, 173, 89, 0.28);
+	border-radius: 5px;
+	background: rgba(10, 8, 8, 0.74);
+	box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
 }
 
-.map-scale span {
-	width: 86px;
-	height: 8px;
-	border-inline: 2px solid var(--ink);
-	border-bottom: 2px solid var(--ink);
-	background: linear-gradient(90deg, var(--ink) 0 50%, transparent 50%);
-	background-size: 28px 8px;
+.map-caption strong,
+.map-caption span {
+	font-family: ui-monospace, "SF Mono", Menlo, monospace;
+	font-weight: 900;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
+
+.map-caption strong {
+	color: var(--gold);
+	font-size: 12px;
+}
+
+.map-caption span {
+	color: var(--muted);
+	font-size: 10px;
 }
 
 .system-copy {
@@ -721,9 +634,21 @@ h1 {
 
 .concept-strip article {
 	position: relative;
-	min-height: 132px;
+	min-height: 250px;
 	padding: 20px;
 	overflow: hidden;
+}
+
+.feature-icon {
+	display: block;
+	width: 84px;
+	height: 84px;
+	margin-bottom: 16px;
+	border: 1px solid rgba(224, 173, 89, 0.26);
+	border-radius: 8px;
+	object-fit: cover;
+	image-rendering: pixelated;
+	box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24), 0 0 18px rgba(118, 216, 189, 0.12);
 }
 
 .concept-strip strong {
@@ -767,6 +692,10 @@ h1 {
 		grid-template-columns: repeat(3, 1fr);
 	}
 
+	.world-strip {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
 	.status-grid,
 	.concept-strip {
 		grid-template-columns: repeat(3, 1fr);
@@ -780,6 +709,10 @@ h1 {
 
 	.systems {
 		grid-template-columns: minmax(320px, 0.86fr) minmax(420px, 1.14fr);
+	}
+
+	.world-strip {
+		grid-template-columns: repeat(4, 1fr);
 	}
 }
 
