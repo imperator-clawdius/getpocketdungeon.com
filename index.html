@@ -4,7 +4,9 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#0a0808">
-		<meta name="description" content="Pocket Dungeon is a firelit pixel-fantasy AI tabletop adventure for small parties.">
+		<meta name="referrer" content="strict-origin-when-cross-origin">
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://api.getpocketdungeon.com; img-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; base-uri 'self'; object-src 'none';">
+		<meta name="description" content="Pocket Dungeon is a closed-test pixel-fantasy adventure app with an AI Dungeon Master, multiplayer turns, dice, memory, and Android tester builds.">
 		<title>Pocket Dungeon</title>
 		<link rel="stylesheet" href="./styles.css">
 	</head>
@@ -18,24 +20,25 @@
 			<nav aria-label="Primary">
 				<a href="#modes">Modes</a>
 				<a href="#systems">Systems</a>
-				<a href="https://api.getpocketdungeon.com/health">Gateway</a>
+				<a href="#status">Status</a>
 			</nav>
 		</header>
 
 		<main id="top" class="site-shell">
 			<section class="hero" aria-labelledby="title">
 				<div class="hero-copy">
-					<p class="kicker">Closed test gateway online</p>
+					<p class="kicker">Closed test in progress</p>
 					<h1 id="title">Pocket Dungeon</h1>
-					<p class="lede">A firelit pixel-fantasy adventure where an AI Dungeon Master turns every party choice into the next chamber, omen, bargain, or battle.</p>
+					<p class="lede">A mobile-first pixel-fantasy adventure where a living AI Dungeon Master turns party choices into chambers, omens, bargains, battles, and consequences that carry between sessions.</p>
 					<div class="actions">
 						<a class="primary" href="mailto:team@getpocketdungeon.com?subject=Pocket%20Dungeon%20tester%20access">Request Tester Access</a>
-						<a class="secondary" href="https://api.getpocketdungeon.com/health">Check Gateway</a>
+						<a class="secondary" href="#status">View Build Status</a>
 					</div>
 					<div class="status-strip">
-						<p class="status" id="gateway-status">Checking the dungeon gate...</p>
+						<p class="status" id="gateway-status" aria-live="polite">Checking the closed-test gateway...</p>
 						<span>Android first</span>
 						<span>Private backend</span>
+						<span>Public preview</span>
 					</div>
 				</div>
 
@@ -55,7 +58,7 @@
 					</div>
 					<div class="hud-card hud-turn">
 						<span>Turn</span>
-						<strong>Narrating</strong>
+						<strong>Resolving</strong>
 					</div>
 					<div class="hud-card hud-roll">
 						<span>Roll</span>
@@ -69,18 +72,43 @@
 				<article>
 					<span class="mode-icon">I</span>
 					<h2>Solo Delve</h2>
-					<p>Start instantly with AI companions and a campaign that remembers the trail.</p>
+					<p>Start a one-player campaign with AI companions, persistent memory, and a Dungeon Master that keeps the story moving.</p>
 				</article>
 				<article>
 					<span class="mode-icon">II</span>
 					<h2>Private Party</h2>
-					<p>Share a passkey, gather a small crew, and resolve each turn together.</p>
+					<p>Create a passkey, gather a small crew, ready up, and resolve submitted actions as one coordinated table.</p>
 				</article>
 				<article>
 					<span class="mode-icon">III</span>
 					<h2>Matchmaking</h2>
-					<p>Queue into a public adventure; missing seats are filled by NPC allies.</p>
+					<p>Queue into public adventures built for quick sessions, stranger parties, and automatic turn pacing.</p>
 				</article>
+			</section>
+
+			<section id="status" class="build-status" aria-labelledby="status-title">
+				<div class="status-copy">
+					<p class="kicker">Work in progress</p>
+					<h2 id="status-title">Closed-test software, not a finished commercial release.</h2>
+					<p>Pocket Dungeon is being hardened for testers before it is sold publicly. The site is public so partners and testers can find the project; the game code, campaign logic, provider keys, and Android pipeline remain in the private application repository.</p>
+				</div>
+				<div class="status-grid">
+					<article>
+						<span class="status-token live">Live</span>
+						<h3>Public Website</h3>
+						<p>Hosted on GitHub Pages at getpocketdungeon.com with only static, shareable marketing assets.</p>
+					</article>
+					<article>
+						<span class="status-token guarded">Guarded</span>
+						<h3>Game Gateway</h3>
+						<p>The API stays behind api.getpocketdungeon.com. Visitors see a safe status check here instead of raw backend output.</p>
+					</article>
+					<article>
+						<span class="status-token testing">Testing</span>
+						<h3>Android App</h3>
+						<p>Tester builds connect to the private gateway for campaigns, turns, dice, memory, and audio readiness events.</p>
+					</article>
+				</div>
 			</section>
 
 			<section id="systems" class="systems">
@@ -93,17 +121,37 @@
 					<div class="map-label">Ashen Bell Crypt</div>
 				</div>
 				<div class="system-copy">
-					<p class="kicker">Built like a live table</p>
-					<h2>One gateway, many strange doors.</h2>
-					<p>The public site is just the torch at the entrance. The private backend handles model routing, campaign state, dice, audio, memory, multiplayer turns, and safety checks behind <strong>api.getpocketdungeon.com</strong>.</p>
+					<p class="kicker">The concept</p>
+					<h2>A pocket-sized campaign engine with a real table rhythm.</h2>
+					<p>The app is designed around short mobile sessions: pick a mode, submit an action, roll when the Dungeon Master calls for it, then watch the party state change. The private backend handles model routing, campaign state, dice, audio, memory, multiplayer turns, and moderation hints behind <strong>api.getpocketdungeon.com</strong>.</p>
 					<ul class="rune-list">
-						<li>Envelope-validated Dungeon Master turns</li>
-						<li>Persistent campaign memory and party state</li>
-						<li>Android tester builds pointed at the same gateway</li>
+						<li>Validated Dungeon Master turns with three clear choices</li>
+						<li>Seeded dice, XP, character sheets, inventory, and quest state</li>
+						<li>Campaign memory that recalls prior scenes when the story needs it</li>
+						<li>Android tester builds pointed at the same production gateway</li>
 					</ul>
 				</div>
 			</section>
+
+			<section class="concept-strip" aria-label="Pocket Dungeon product pillars">
+				<article>
+					<strong>AI Dungeon Master</strong>
+					<span>Structured narration, choices, tool calls, and safety-aware redirects.</span>
+				</article>
+				<article>
+					<strong>Multiplayer Turns</strong>
+					<span>Serialized party actions, timeouts, host transfer, and inactive-player handling.</span>
+				</article>
+				<article>
+					<strong>Persistent Campaigns</strong>
+					<span>SQLite state plus vector memory for the beats that should matter later.</span>
+				</article>
+			</section>
 		</main>
+		<footer class="site-footer">
+			<span>Pocket Dungeon is in active development.</span>
+			<a href="mailto:team@getpocketdungeon.com?subject=Pocket%20Dungeon%20tester%20access">Tester access</a>
+		</footer>
 		<script src="./site.js" type="module"></script>
 	</body>
 </html>
